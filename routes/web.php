@@ -16,16 +16,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('events', function () {
 
-Route::get('tasks', function () {
+    $events = App\event::where('location', 'Berlin')->get();
 
-
-    $task = DB::table('tasks')->latest();
-
-    dd($task);
-
-    return view('about', compact('tasks'));
-
+    return view('events', compact('events'));
 });
 
 
