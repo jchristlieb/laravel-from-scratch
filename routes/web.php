@@ -15,12 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('events', function () {
-
-    $events = App\event::where('location', 'Berlin')->get();
-
-    return view('events', compact('events'));
-});
+Route::get('/events', 'EventsController@index');
+Route::get('/events/{id}', 'EventsController@show');
 
 

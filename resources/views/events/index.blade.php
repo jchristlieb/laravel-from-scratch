@@ -10,7 +10,7 @@
 
     @foreach($events as $event)
 
-        <li>{{ $event->name }} located in {{ $event->location }}</li>
+        <li><a href="/events/{{ $event->id }}">{{ $event->name }} located in {{ $event->location }}</a></li>
 
         @endforeach
 
