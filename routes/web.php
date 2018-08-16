@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/events', 'EventsController@index');
-Route::get('/events/{id}', 'EventsController@show');
+Route::get('/events/{event}', 'EventsController@show');
 
 
+Route::get('/posts', 'PostController@index');
+Route::get('/posts/{post}', 'PostController@show');

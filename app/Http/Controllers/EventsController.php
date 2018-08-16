@@ -14,9 +14,9 @@ class EventsController extends Controller
         return view('/events/index', compact('events'));
     }
 
-    public function show($id){
+    public function show(Event $event){
 
-        $event = Event::find($id)->first();
+        //$event = Event::find($id)->first();
         return view('/events/single', compact('event'));
     }
 
