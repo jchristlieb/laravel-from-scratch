@@ -11,13 +11,9 @@
 
 
 
-<footer>
-
-    <div class="container">
+<footer class="text-muted base-col pt-4 pb-2">
 
         @include('snippets.footer')
-
-    </div>
 
 </footer>
 </body>

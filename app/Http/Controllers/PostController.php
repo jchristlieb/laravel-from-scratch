@@ -12,11 +12,11 @@ class PostController extends Controller
 
         $posts = Post::all();
 
-        return view('posts.index', compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 
     public function show(Post $post){
 
-        return view('posts.single', compact('post'));
+        return view('blog.single', compact('post'));
     }
 }
