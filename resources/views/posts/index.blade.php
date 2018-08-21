@@ -8,7 +8,7 @@
             <p class="lead text-muted">Build with Laravel by Jan Christlieb and inspired by Jeffrey Way's Laravel from
                 Scratch course.</p>
             <p>
-                <a href="/blog/create" class="btn btn-primary my-2">Create blog post</a>
+                <a href="/posts/create" class="btn btn-primary my-2">Create blog post</a>
                 <a href="#" class="btn btn-secondary my-2">Secondary action</a>
             </p>
         </div>
@@ -24,12 +24,12 @@
 
                 <div class="col-md-6">
                     <div class="card mb-4 box-shadow">
-                        <a href="/blog/{{ $post->id }}">
+                        <a href="/posts/{{ $post->id }}">
                             <img class="card-img-top"
                                  src="https://placeimg.com/640/480/any"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h3>{{ $post->headline }}</h3>
+                                <h3>{{ $post->title }}</h3>
                                 <p class="card-text">{{ str_limit($post->body, 50, '...') }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
@@ -38,7 +38,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit
                                         </button>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+                                    <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
                                 </div>
                             </div>
                         </a>

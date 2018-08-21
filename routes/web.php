@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('index');
+//});
 
-Route::get('/events', 'EventsController@index');
-Route::get('/events/{event}', 'EventsController@show');
+Route::get('/', 'PostController@index');
+Route::get('/posts/create', 'PostController@create');
+Route::get('/posts/{post}', 'PostController@show');
+Route::post('/posts', 'PostController@store');
 
 
-Route::get('/blog', 'PostController@index');
-Route::get('/blog/{post}', 'PostController@show');

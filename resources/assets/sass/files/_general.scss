@@ -14,4 +14,10 @@
     background: $highlight-col;
 }
 
+body {
+    height: 100%;
+}
 
+footer {
+    box-shadow: 0 50vh 0 50vh $base-col;
+}

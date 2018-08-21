@@ -10487,3 +10487,12 @@ a.text-dark:focus {
   background: #f6993f;
 }
 
+body {
+  height: 100%;
+}
+
+footer {
+  -webkit-box-shadow: 0 50vh 0 50vh #ffffff;
+          box-shadow: 0 50vh 0 50vh #ffffff;
+}
+

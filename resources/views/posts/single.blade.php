@@ -2,9 +2,12 @@
 
 @section('header')
 
-    <div class="container">
-        <h1 class="display-2 pt-4 pb-4">{{ $post->headline }}</h1>
-    </div>
+    <section class="header base-col">
+        <div class="container pt-4 pb-2">
+            <h1 class="display-2">{{ $post->title }}</h1>
+            <p class="text-muted">{{ $post->created_at->diffForHumans() }}</p>
+        </div>
+    </section>
 
 
 @endsection
@@ -14,7 +17,7 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row mt-4 mb-4">
             <p>{{ $post->body }}</p>
         </div>
 
@@ -24,6 +27,6 @@
 
 @section('sidebar')
 
-    @include('blog.sidebar')
+    @include('posts.sidebar')
 
 @endsection
