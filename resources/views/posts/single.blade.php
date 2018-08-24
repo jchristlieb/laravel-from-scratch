@@ -25,6 +25,38 @@
 
     <hr>
 
+    <h3 class="mb-3w">Comments</h3>
+
+    <ul class="list-group">
+
+        @foreach( $comments as $comment )
+
+            <li class="list-group-item mb-2">
+                <p class="text-muted mb-0">{{ $comment->created_at->DiffForHumans() }}</p>
+                <p class="mb-0">{{ $comment->body }}</p>
+            </li>
+
+        @endforeach
+
+    </ul>
+
+    <hr>
+
+    <h3 class="mb-3">Join the conversation</h3>
+
+    <form method="post" action="/posts/{{ $post->id }}/comments">
+
+        {{ csrf_field() }}
+
+        <div class="form-group">
+            <textarea class="form-control" name="body" id="body"></textarea>
+            <button type="submit" class="btn btn-primary mt-3">Add your comment</button>
+        </div>
+
+
+    </form>
+
+
 @endsection
 
 @section('sidebar')

@@ -8,8 +8,8 @@
             <p class="lead text-muted">Build with Laravel by Jan Christlieb and inspired by Jeffrey Way's Laravel from
                 Scratch course.</p>
             <p>
-                <a href="/posts/create" class="btn btn-primary my-2">Create blog post</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                <a href="/register" class="btn btn-primary my-2">Register</a>
+                <a href="/login" class="btn btn-secondary my-2">Login</a>
             </p>
         </div>
     </section>
@@ -22,11 +22,16 @@
 
             @foreach($posts as $post)
 
+                <?php
+                $raw = ['animals', 'architecture', 'nature', 'people', 'tech'];
+                $image = array_rand($raw);
+
+                ?>
                 <div class="col-md-6">
                     <div class="card mb-4 box-shadow">
                         <a href="/posts/{{ $post->id }}">
                             <img class="card-img-top"
-                                 src="https://placeimg.com/640/480/any"
+                                 src="https://placeimg.com/640/480/{{ $image }}"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h3>{{ $post->title }}</h3>

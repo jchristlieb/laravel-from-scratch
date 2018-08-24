@@ -22,4 +22,3 @@ Route::post('/posts', 'PostController@store');
 
 Route::post('/posts/{post}/comments', 'CommentController@store');
 
-
