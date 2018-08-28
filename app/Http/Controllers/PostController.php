@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +23,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
 
-        return view('posts.index', compact('posts'));
+        $posts = Post::latest()
+            ->filter(request(['month', 'year']))
+            ->get();
+
+
+        $archives = Post::archives();
+
+        return view('posts.index', compact('posts', 'archives'));
     }
 
     /**
@@ -40,12 +54,16 @@ class PostController extends Controller
     {
         $this->validate(Request(), [
            'title' => 'required',
-            'body' => 'required',
+            'body' => 'required'
         ]);
 
-        Post::create(request(['title', 'body']));
+        Post::create([
+           'title' => request('title'),
+           'body' => request('body'),
+           'user_id' => auth()->id()
+        ]);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**

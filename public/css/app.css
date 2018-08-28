@@ -10487,6 +10487,12 @@ a.text-dark:focus {
   background: #f6993f;
 }
 
+p,
+li {
+  font-size: 18px;
+  line-height: 28px;
+}
+
 body {
   height: 100%;
 }
@@ -10494,5 +10500,9 @@ body {
 footer {
   -webkit-box-shadow: 0 50vh 0 50vh #ffffff;
           box-shadow: 0 50vh 0 50vh #ffffff;
+}
+
+.card a {
+  text-decoration: none;
 }
 

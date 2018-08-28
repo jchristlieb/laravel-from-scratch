@@ -2,23 +2,21 @@
 
 @section('header')
 
-    <section class="jumbotron text-center base-col">
+    <section class="header base-col">
         <div class="container">
-            <h1 class="jumbotron-heading">A simple blog project</h1>
-            <p class="lead text-muted">Build with Laravel by Jan Christlieb and inspired by Jeffrey Way's Laravel from
-                Scratch course.</p>
-            <p>
-                <a href="/register" class="btn btn-primary my-2">Register</a>
-                <a href="/login" class="btn btn-secondary my-2">Login</a>
-            </p>
+            <blockquote class="blockquote text-center p-4">
+                <h1 class="display-2">Never stop learning, testing and trying.</h1>
+                <footer class="blockquote-footer">Ben Hardy <cite title="Source Title">on Medium.com</cite></footer>
+            </blockquote>
         </div>
     </section>
 
 @endsection
 @section('content')
 
-    <div class="album base-col__darker">
+    <div class="album">
         <div class="row">
+
 
             @foreach($posts as $post)
 
@@ -34,17 +32,19 @@
                                  src="https://placeimg.com/640/480/{{ $image }}"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h3>{{ $post->title }}</h3>
+                                <h3 class="m-0">{{ $post->title }}</h3>
+                                <small class="text-muted">By {{ $post->user->name }}
+                                    written {{ $post->created_at->diffForHumans() }}</small>
                                 <p class="card-text">{{ str_limit($post->body, 50, '...') }}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit
-                                        </button>
-                                    </div>
-                                    <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
-                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                @if( $post->comments->count() < 1)
+                                    <small>Write the first comment</small>
+                                @elseif( $post->comments->count() < 2 )
+                                    <small>{{ $post->comments->count() }} comment written</small>
+                                @else
+                                    <small>{{ $post->comments->count() }} comments written</small>
+                                    @endif
                             </div>
                         </a>
                     </div>

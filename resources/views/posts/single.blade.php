@@ -5,7 +5,8 @@
     <section class="header base-col">
         <div class="container pt-4 pb-2">
             <h1 class="display-2">{{ $post->title }}</h1>
-            <p class="text-muted">{{ $post->created_at->diffForHumans() }}</p>
+            <p class="text-muted">Written <strong>{{ $post->created_at->diffForHumans() }}</strong> by
+                <strong>{{ $post->user->name }}</strong>.</p>
         </div>
     </section>
 
@@ -17,7 +18,7 @@
 
     <div class="container">
 
-        <div class="row mt-4 mb-4">
+        <div class="row">
             <p>{{ $post->body }}</p>
         </div>
 
@@ -25,36 +26,58 @@
 
     <hr>
 
-    <h3 class="mb-3w">Comments</h3>
+    @if( $post->comments->count() <  1 )
 
-    <ul class="list-group">
+        <h3 class="mb-3">Write the first comment</h3>
 
-        @foreach( $comments as $comment )
+        <form method="post" action="/posts/{{ $post->id }}/comments">
 
-            <li class="list-group-item mb-2">
-                <p class="text-muted mb-0">{{ $comment->created_at->DiffForHumans() }}</p>
-                <p class="mb-0">{{ $comment->body }}</p>
-            </li>
+            {{ csrf_field() }}
 
-        @endforeach
-
-    </ul>
-
-    <hr>
-
-    <h3 class="mb-3">Join the conversation</h3>
-
-    <form method="post" action="/posts/{{ $post->id }}/comments">
-
-        {{ csrf_field() }}
-
-        <div class="form-group">
-            <textarea class="form-control" name="body" id="body"></textarea>
-            <button type="submit" class="btn btn-primary mt-3">Add your comment</button>
-        </div>
+            <div class="form-group">
+                <textarea class="form-control" name="body" id="body"></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Add your comment</button>
+            </div>
 
 
-    </form>
+        </form>
+
+    @else
+
+        <h3 class="mb-3">Comments</h3>
+
+        <ul class="list-group">
+
+            @foreach( $comments as $comment )
+
+                <li class="list-group-item mb-2">
+                    <p class="text-muted mb-0">Commented <strong>{{ $comment->created_at->DiffForHumans() }}</strong> by
+                        <strong>{{ $comment->user->name }}</strong></p>
+                    <p class="mb-0">{{ $comment->body }}</p>
+                </li>
+
+            @endforeach
+
+        </ul>
+
+        <hr>
+
+        <h3 class="mb-3">Join the conversation</h3>
+
+        <form method="post" action="/posts/{{ $post->id }}/comments">
+
+            {{ csrf_field() }}
+
+            <div class="form-group">
+                <textarea class="form-control" name="body" id="body"></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Add your comment</button>
+            </div>
+
+
+        </form>
+
+    @endif
+
 
 
 @endsection

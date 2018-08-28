@@ -11,14 +11,17 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('index');
-//});
 
-Route::get('/', 'PostController@index');
-Route::get('/posts/create', 'PostController@create');
-Route::get('/posts/{post}', 'PostController@show');
-Route::post('/posts', 'PostController@store');
+// Posts
+Route::get('/', 'PostController@index')->name('home');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::post('/posts', 'PostController@store')->name('posts.store');
+Route::post('/posts/{post}/comments', 'CommentController@store')->name('posts.comments.store');
 
-Route::post('/posts/{post}/comments', 'CommentController@store');
-
+// Auth
+Route::get('/register', 'RegisterController@create')->name('register.create');
+Route::post('/register', 'RegisterController@store')->name('register.store');
+Route::get('/login', 'SessionController@create')->name('session.login');
+Route::post('/login', 'SessionController@store')->name('session.store');
+Route::get('/logout', 'SessionController@destroy')->name('session.destroy');
