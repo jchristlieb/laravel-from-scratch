@@ -8,11 +8,11 @@
     @include('snippets.nav')
 </header>
 
-<section class="intro base-col mt-4 mb-4">
+<section class="intro base-col">
     @yield('header')
 </section>
 
-<section class="main base-col__darker">
+<section class="main base-col__darker pt-4 pb-4">
         @yield('content')
 </section>
 
