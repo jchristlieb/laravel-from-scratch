@@ -22,7 +22,8 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h3>Search archive</h3>
-                <button class="form-control text-left mt-2 mb-2" type="button" data-toggle="collapse" data-target="#archive2018"
+                <button class="form-control text-left mt-2 mb-2" type="button" data-toggle="collapse"
+                        data-target="#archive2018"
                         aria-expanded="false" aria-controls="2018">Article from 2018
                 </button>
                 <div class="collapse" id="archive2018">
@@ -38,7 +39,8 @@
                         @endif
                     @endforeach
                 </div>
-                <button class="form-control text-left mt-2 mb-2" type="button" data-toggle="collapse" data-target="#archive2017"
+                <button class="form-control text-left mt-2 mb-2" type="button" data-toggle="collapse"
+                        data-target="#archive2017"
                         aria-expanded="false" aria-controls="2018">Articles from 2017
                 </button>
                 <div class="collapse" id="archive2017">
@@ -55,9 +57,16 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
-        </a>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3>View Tags</h3>
+                <ul class="list-group">
+                    @foreach($tags as $tag)
+                        <li class="list-group-item"><a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a></li>
+                        @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
 </div>
