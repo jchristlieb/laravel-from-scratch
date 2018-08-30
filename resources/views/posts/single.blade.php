@@ -7,6 +7,12 @@
             <h1 class="display-2">{{ $post->title }}</h1>
             <p class="text-muted">Written <strong>{{ $post->created_at->diffForHumans() }}</strong> by
                 <strong>{{ $post->user->name }}</strong>.</p>
+            @if(count($post->tags))
+                @foreach($post->tags as $tag)
+                    <a href="/posts/tags/{{ $tag->name }}"> <span
+                            class="badge badge-primary p-2 mr-2">{{ $tag->name }}</span></a>
+                @endforeach
+            @endif
         </div>
     </section>
 
