@@ -19,6 +19,8 @@ Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 Route::post('/posts', 'PostController@store')->name('posts.store');
 Route::post('/posts/{post}/comments', 'CommentController@store')->name('posts.comments.store');
 
+Route::get('posts/tags/{tag}', 'TagController@index')->name('posts.tags.index');
+
 // Auth
 Route::get('/register', 'RegisterController@create')->name('register.create');
 Route::post('/register', 'RegisterController@store')->name('register.store');
